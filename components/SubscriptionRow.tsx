@@ -5,6 +5,8 @@ type SubscriptionRowProps = {
   amount: string;
   date: string;
   flag?: string;
+  /** Pill text when flagged (defaults to "Action needed"). */
+  badge?: string;
   /** Flagged state (amber edge, badge, flag text instead of the date). */
   flagged?: boolean;
   /** Slide-in delay in seconds; undefined renders static. */
@@ -17,6 +19,7 @@ export function SubscriptionRow({
   amount,
   date,
   flag,
+  badge = "Action needed",
   flagged = false,
   delay = 0,
   animateIn = false,
@@ -40,7 +43,7 @@ export function SubscriptionRow({
           flagged ? "opacity-100" : "opacity-0"
         }`}
       >
-        Action needed
+        {badge}
       </span>
       <div className="flex items-center gap-3">
         <span className="flex size-9 items-center justify-center rounded-lg border border-hairline bg-ink font-display text-base font-bold">

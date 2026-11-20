@@ -73,3 +73,35 @@ export const heroPhone = {
   description:
     "Leakwise app preview: 14 subscriptions totalling $247 a month. PhotoPro is flagged as a trial ending in 2 days, FitPass as unused for 64 days, and a reminder says NewsDaily renews in 3 days with Keep and Cancel options.",
 } as const;
+
+export const leak = {
+  eyebrow: "The leak",
+  stat: 512,
+  caption: "That's what the average Leakwise member was losing every year before they joined.",
+  facts: [
+    { icon: "hourglass", text: "Free trials that auto-convert" },
+    { icon: "trend", text: "Price increases you never noticed" },
+    { icon: "apps", text: "Apps you stopped opening months ago" },
+  ],
+} as const;
+
+export const how = {
+  heading: "How it works",
+  steps: [
+    {
+      title: "Connect your cards.",
+      body: "Read-only and encrypted. We can see charges, never move money.",
+      label: "Phone preview: connecting a card with a read-only, encrypted connection.",
+    },
+    {
+      title: "See every subscription.",
+      body: "Leakwise groups recurring charges, flags trials and spots price hikes.",
+      label: "Phone preview: subscriptions grouped by Streaming, Fitness and Apps, with a trial and a price increase flagged.",
+    },
+    {
+      title: "Keep or cancel.",
+      body: "Get a heads-up 3 days before each renewal. Cancel the ones you don't need in one tap.",
+      label: "Phone preview: a renewal alert for NewsDaily with Keep and Cancel buttons, and a confirmation that PhotoPro was cancelled.",
+    },
+  ],
+} as const;

@@ -5,12 +5,16 @@ type PhoneFrameProps = {
   /** Rendered outside the clipped screen (e.g. a notification overlapping the frame edge). */
   overlay?: React.ReactNode;
   className?: string;
+  /** Narrower shell (280px) for stacked, one-per-step layouts. */
+  compact?: boolean;
 };
 
 /** Decorative phone shell. Wrap in an element with role="img" + label when used as an illustration. */
-export function PhoneFrame({ children, overlay, className }: PhoneFrameProps) {
+export function PhoneFrame({ children, overlay, className, compact = false }: PhoneFrameProps) {
   return (
-    <div className={`relative w-[300px] sm:w-[340px] lg:w-[350px] ${className ?? ""}`}>
+    <div className={`relative ${
+        compact ? "w-[280px]" : "w-[300px] sm:w-[340px] lg:w-[350px]"
+      } ${className ?? ""}`}>
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -inset-16 -z-10"

@@ -60,3 +60,16 @@ export const Battery = ({ className }: { className?: string }) => (
 export const Dots = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" className={className} fill="currentColor"><circle cx="5" cy="12" r="1.8" /><circle cx="12" cy="12" r="1.8" /><circle cx="19" cy="12" r="1.8" /></svg>
 );
+
+export const Hourglass = ({ className }: { className?: string }) => (
+  <svg {...base} className={className}><path d="M6 3h12M6 21h12M7 3c0 5 5 6 5 9s-5 4-5 9M17 3c0 5-5 6-5 9s5 4 5 9" /></svg>
+);
+export const TrendUp = ({ className }: { className?: string }) => (
+  <svg {...base} className={className}><path d="M3 17l6-6 4 4 8-8M21 13V7h-6" /></svg>
+);
+export const AppsGrid = ({ className }: { className?: string }) => (
+  <svg {...base} className={className}><rect x="4" y="4" width="6" height="6" rx="1.5" /><rect x="14" y="4" width="6" height="6" rx="1.5" /><rect x="4" y="14" width="6" height="6" rx="1.5" /><rect x="14" y="14" width="6" height="6" rx="1.5" /></svg>
+);
+export const CardIcon = ({ className }: { className?: string }) => (
+  <svg {...base} className={className}><rect x="3" y="5" width="18" height="14" rx="2.5" /><path d="M3 10h18M7 15h3" /></svg>
+);
