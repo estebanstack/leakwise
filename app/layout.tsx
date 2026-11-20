@@ -22,7 +22,7 @@ const description =
   "Leakwise finds every subscription and free trial on your cards, warns you before they renew, and cancels the ones you don't use, in one tap.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://leakwise.vercel.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://leakwise-mu.vercel.app"),
   title,
   description,
   openGraph: {
