@@ -105,3 +105,33 @@ export const how = {
     },
   ],
 } as const;
+
+export const features = {
+  eyebrow: "Features",
+  // Invented heading (the brief gives no h2 copy for this section).
+  heading: "Everything that quietly drains your account, caught.",
+  items: [
+    { id: "renewal", title: "Renewal alerts", body: "Know 3 days before anything renews." },
+    {
+      id: "trial",
+      title: "Trial tracker",
+      body: "Every free trial, with a countdown to the day it starts charging.",
+    },
+    { id: "cancel", title: "One-tap cancel", body: "We handle the cancel flow for 400+ services." },
+    {
+      id: "radar",
+      title: "Price-hike radar",
+      body: "Get flagged the moment a subscription quietly gets more expensive.",
+    },
+    {
+      id: "shared",
+      title: "Shared plans",
+      body: "Split family and roommate subscriptions so nobody pays twice.",
+    },
+    {
+      id: "report",
+      title: "Monthly report",
+      body: "One clear email: what you pay, what you saved, what to review.",
+    },
+  ],
+} as const;
