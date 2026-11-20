@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { CheckCircle } from "@/components/icons";
 
 type EmailCaptureProps = {
@@ -9,6 +9,10 @@ type EmailCaptureProps = {
   /** Prefix for ids; combined with a unique suffix so several instances can coexist. */
   idPrefix?: string;
   className?: string;
+  /** Stable id for the input (overrides the generated one). */
+  inputId?: string;
+  /** When a link to this hash is clicked (or the page loads on it), focus the input. */
+  focusOnHash?: string;
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -17,13 +21,27 @@ export function EmailCapture({
   buttonLabel = "Find my subscriptions",
   idPrefix = "email",
   className,
+  inputId: inputIdProp,
+  focusOnHash,
 }: EmailCaptureProps) {
   const uid = useId();
-  const inputId = `${idPrefix}-${uid}`;
+  const inputId = inputIdProp ?? `${idPrefix}-${uid}`;
   const errorId = `${inputId}-error`;
   const inputRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    if (!focusOnHash) return;
+    const focus = () => inputRef.current?.focus({ preventScroll: true });
+    if (window.location.hash === focusOnHash) focus();
+    const onClick = (e: MouseEvent) => {
+      const a = (e.target as Element | null)?.closest?.("a");
+      if (a?.getAttribute("href") === focusOnHash) setTimeout(focus, 50);
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, [focusOnHash]);
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

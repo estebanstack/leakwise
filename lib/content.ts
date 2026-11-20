@@ -157,3 +157,99 @@ export const calculator = {
   defaults: ["stream-a", "stream-b", "gym", "fitness", "design"],
   empty: "Tap a few subscriptions to see your leak.",
 } as const;
+
+export const pricing = {
+  eyebrow: "Pricing",
+  // Invented heading (the brief gives no h2 copy for this section).
+  heading: "Pay less than one forgotten subscription.",
+  yearlyPill: "2 months free",
+  note: "Cancel anytime. Yes, we see the irony.",
+  cta: "Start free",
+  popular: "Most popular",
+  plans: [
+    {
+      name: "Free",
+      monthly: "$0",
+      yearly: "$0",
+      billedYearly: "Free forever",
+      features: ["Up to 2 cards", "Subscription list", "Renewal alerts"],
+    },
+    {
+      name: "Plus",
+      monthly: "$4.99",
+      yearly: "$4.16",
+      // $4.16 x 12 = $49.92
+      billedYearly: "$49.92 billed yearly",
+      popular: true,
+      features: ["Unlimited cards", "Trial tracker", "Price-hike radar", "One-tap cancel"],
+    },
+    {
+      name: "Family",
+      monthly: "$8.99",
+      yearly: "$7.49",
+      // $7.49 x 12 = $89.88
+      billedYearly: "$89.88 billed yearly",
+      features: ["Everything in Plus", "Up to 5 people", "Shared plans"],
+    },
+  ],
+} as const;
+
+export const testimonials = {
+  eyebrow: "Members",
+  // Invented heading (the brief gives no h2 copy for this section).
+  heading: "Leaks found, money kept.",
+  items: [
+    {
+      quote:
+        "Found a gym membership I'd been paying for since 2023. Leakwise paid for itself in a day.",
+      name: "Priya R.",
+      role: "designer",
+      initials: "PR",
+    },
+    {
+      quote: "The trial countdown alone has saved me from four auto-renewals this year.",
+      name: "Marcus T.",
+      role: "student",
+      initials: "MT",
+    },
+    {
+      quote:
+        "We were paying for the same streaming service twice in our household. Never again.",
+      name: "Elena & Jon",
+      role: "Family plan",
+      initials: "E&J",
+    },
+  ],
+} as const;
+
+export const faq = {
+  eyebrow: "FAQ",
+  // Invented heading.
+  heading: "Questions, answered",
+  items: [
+    {
+      q: "Is it safe to connect my bank?",
+      a: "Leakwise uses a read-only connection through a certified banking partner. We can see transactions, never move money, and we never store your bank password.",
+    },
+    {
+      q: "How does one-tap cancel work?",
+      a: "For 400+ services we complete the cancellation flow for you. For the rest, we give you the direct cancel link and step-by-step instructions.",
+    },
+    {
+      q: "What does the free plan include?",
+      a: "Up to 2 cards, your full subscription list and renewal alerts. Forever.",
+    },
+    {
+      q: "Can I use it with my partner or roommates?",
+      a: "Yes. The Family plan covers up to 5 people and lets you split shared subscriptions.",
+    },
+    {
+      q: "What if I want to leave?",
+      a: "Delete your account in settings and we erase your data within 30 days.",
+    },
+  ],
+} as const;
+
+export const finalCta = {
+  heading: "Find your leaks in 2 minutes.",
+} as const;

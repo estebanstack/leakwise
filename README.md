@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Leakwise
 
-## Getting Started
+A landing page for **Leakwise**, a fictional subscription-tracker app: it finds forgotten subscriptions and free trials, warns you before they renew, and cancels the ones you don't use in one tap.
 
-First, run the development server:
+This is a portfolio piece (page #2): a dark, calm fintech look with scroll-triggered motion, one scroll-pinned section, an interactive savings calculator and a pricing toggle.
+
+> Leakwise is a fictional product. Portfolio concept designed and built by Esteban Castro.
+
+## Stack
+
+- Next.js 16 (App Router), React 19, TypeScript
+- Tailwind CSS v4 (tokens in `app/globals.css` via `@theme`)
+- Motion (`motion/react`, loaded through `LazyMotion` + `m.*` components)
+- Fonts via `next/font/google`: Bricolage Grotesque and Inter
+- No backend, no database, no UI library, no icon library (inline SVG). Forms are front-end only: validation, then a success state.
+
+## Scripts
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev      # dev server
+npm run build    # production build
+npm run start    # serve the production build
+npm run lint     # ESLint
+npx tsc --noEmit # type check
+node --test lib/calc.test.ts   # calculator math self-check (Node 24, no extra deps)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Optional: set `NEXT_PUBLIC_SITE_URL` so metadata, sitemap and robots use the real deployed URL.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/            layout, page, globals.css, icons, OG image, robots, sitemap
+components/     Nav, Hero, LeakStat, HowItWorks, Features, SavingsCalculator,
+                Pricing, Testimonials, Faq, FinalCta, Footer + small UI pieces
+components/how/ and components/features/   phone screens and animated UI bits
+lib/            content.ts (all copy and data), calc.ts (+ test), reduced-motion hook
+```
 
-## Learn More
+## Accessibility and motion
 
-To learn more about Next.js, take a look at the following resources:
+- Semantic landmarks, a skip link, labelled form fields, visible `:focus-visible` rings and AA contrast on the dark theme.
+- Chips use `aria-pressed`, the pricing toggle is a `radiogroup` with arrow-key support, the FAQ uses buttons with `aria-expanded` / `aria-controls`, and the calculator announces results through a debounced `aria-live` region.
+- Phone mock-ups are decorative (`role="img"` with a text description); real information is always in text.
+- Motion uses transform and opacity only (one small SVG ring excepted). `prefers-reduced-motion` is respected: Motion's `MotionConfig`, a global CSS rule, a hydration-safe hook where structure changes (the pinned "How it works" becomes a stacked layout), and final states rendered immediately.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Images
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+No photos are used; all UI is built in HTML/CSS/SVG.

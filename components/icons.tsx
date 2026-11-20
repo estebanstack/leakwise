@@ -73,3 +73,15 @@ export const AppsGrid = ({ className }: { className?: string }) => (
 export const CardIcon = ({ className }: { className?: string }) => (
   <svg {...base} className={className}><rect x="3" y="5" width="18" height="14" rx="2.5" /><path d="M3 10h18M7 15h3" /></svg>
 );
+
+export const Check = ({ className }: { className?: string }) => (
+  <svg {...base} strokeWidth={2.5} className={className}><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+);
+export const Star = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="currentColor" className={className}>
+    <path d="M12 2.8l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.6l-5.8 3.1 1.1-6.5L2.6 9.6l6.5-.9L12 2.8Z" />
+  </svg>
+);
+export const Plus = ({ className }: { className?: string }) => (
+  <svg {...base} className={className}><path d="M12 5v14M5 12h14" /></svg>
+);

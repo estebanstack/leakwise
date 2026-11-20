@@ -2,17 +2,13 @@ import { Footer } from "@/components/Footer";
 import { Nav } from "@/components/Nav";
 import { Features } from "@/components/Features";
 import { SavingsCalculator } from "@/components/SavingsCalculator";
+import { Faq } from "@/components/Faq";
+import { FinalCta } from "@/components/FinalCta";
+import { Pricing } from "@/components/Pricing";
+import { Testimonials } from "@/components/Testimonials";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { LeakStat } from "@/components/LeakStat";
-
-// Placeholder anchors, replaced by real sections in later phases.
-const placeholders = [
-  { id: "pricing", label: "Pricing" },
-  { id: "testimonials", label: "Testimonials" },
-  { id: "faq", label: "FAQ" },
-  { id: "get-started", label: "Get started" },
-] as const;
 
 export default function Home() {
   return (
@@ -24,11 +20,10 @@ export default function Home() {
         <HowItWorks />
         <Features />
         <SavingsCalculator />
-        {placeholders.map((s) => (
-          <section key={s.id} id={s.id} className="mx-auto max-w-[1200px] px-6 py-10">
-            <h2 className="text-sm font-medium text-muted">{s.label}</h2>
-          </section>
-        ))}
+        <Pricing />
+        <Testimonials />
+        <Faq />
+        <FinalCta />
       </main>
       <Footer />
     </>

@@ -17,10 +17,25 @@ const inter = Inter({
   display: "swap",
 });
 
+const title = "Leakwise — Stop paying for things you forgot about.";
+const description =
+  "Leakwise finds every subscription and free trial on your cards, warns you before they renew, and cancels the ones you don't use, in one tap.";
+
 export const metadata: Metadata = {
-  title: "Leakwise — Stop paying for things you forgot about.",
-  description:
-    "Leakwise finds every subscription and free trial on your cards, warns you before they renew, and cancels the ones you don't use, in one tap.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://leakwise.vercel.app"),
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    type: "website",
+    siteName: "Leakwise",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 export const viewport: Viewport = {
