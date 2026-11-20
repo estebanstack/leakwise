@@ -1,7 +1,6 @@
 "use client";
 
 import * as m from "motion/react-m";
-import { useReducedMotion } from "motion/react";
 
 type RevealProps = {
   children: React.ReactNode;
@@ -10,14 +9,13 @@ type RevealProps = {
   delay?: number;
 };
 
-/** Fade + 20px rise, once, when scrolled into view. Static when motion is reduced. */
+/**
+ * Fade + 20px rise, once, when scrolled into view.
+ * Always renders the same element (no hydration mismatch). Under reduced
+ * motion, MotionConfig reducedMotion="user" drops the transform, so content
+ * only fades in.
+ */
 export function Reveal({ children, className, delay = 0 }: RevealProps) {
-  const reduce = useReducedMotion();
-
-  if (reduce) {
-    return <div className={className}>{children}</div>;
-  }
-
   return (
     <m.div
       className={className}

@@ -12,6 +12,8 @@ type CountUpProps = {
   prefix?: string;
   suffix?: string;
   className?: string;
+  /** "view" (default) counts when scrolled into view; "mount" counts right after hydration (above-the-fold use). */
+  trigger?: "view" | "mount";
   /** Custom formatter (client-only usage; functions can't cross from server components). */
   format?: (value: number) => string;
 };
@@ -36,6 +38,7 @@ export function CountUp({
   prefix = "",
   suffix = "",
   className,
+  trigger = "view",
   format,
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -51,16 +54,16 @@ export function CountUp({
     const el = ref.current;
     if (!el || reduce) return;
     const rect = el.getBoundingClientRect();
-    if (rect.top > window.innerHeight * 0.9) {
+    if (trigger === "mount" || rect.top > window.innerHeight * 0.9) {
       armed.current = true;
       el.textContent = render(from);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [reduce]);
+  }, [reduce, trigger]);
 
   useEffect(() => {
     const el = ref.current;
-    if (!inView || !armed.current || !el || reduce) return;
+    if ((trigger !== "mount" && !inView) || !armed.current || !el || reduce) return;
     const controls = animate(from, to, {
       duration,
       ease: [0.22, 1, 0.36, 1],
@@ -73,7 +76,7 @@ export function CountUp({
     });
     return () => controls.stop();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inView, reduce]);
+  }, [inView, reduce, trigger]);
 
   return (
     <span ref={ref} className={`tnum ${className ?? ""}`}>

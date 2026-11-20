@@ -27,3 +27,49 @@ export const footer = {
     "Leakwise is a fictional product. Portfolio concept designed and built by Esteban Castro.",
   copyright: "© 2026 Leakwise",
 } as const;
+
+export const hero = {
+  eyebrow: "Subscription tracker for real life",
+  headlineLead: "You're paying for things you ",
+  headlineAccent: "forgot about.",
+  subhead:
+    "Leakwise finds every subscription and free trial on your cards, warns you before they renew, and cancels the ones you don't use, in one tap.",
+  smallPrint: "Free forever plan. Read-only bank connection. No card needed.",
+  secondaryCta: { label: "See how it works", href: "#how" },
+  proof: [
+    {
+      icon: "trend",
+      lead: "Avg. member finds ",
+      highlight: "$512/year",
+      tail: " in forgotten charges",
+    },
+    { icon: "lock", lead: "Bank-level encryption" },
+    { icon: "tap", lead: "Cancel in one tap" },
+  ],
+} as const;
+
+export type Subscription = {
+  name: string;
+  amount: string;
+  date: string;
+  flag?: string;
+};
+
+/** Six of the user's 14 subscriptions (they sum to $90.46; the phone header total is across all 14). */
+export const heroSubscriptions: Subscription[] = [
+  { name: "PhotoPro", amount: "$9.99", date: "Renews Dec 11", flag: "Trial ends in 2 days" },
+  { name: "StreamBox", amount: "$15.49", date: "Renews Dec 14" },
+  { name: "FitPass", amount: "$39.00", date: "Renews Dec 20", flag: "Unused for 64 days" },
+  { name: "NewsDaily", amount: "$12.00", date: "Renews Dec 12" },
+  { name: "CloudDrive", amount: "$2.99", date: "Renews Dec 15" },
+  { name: "MusicFlow", amount: "$10.99", date: "Renews Dec 18" },
+];
+
+export const heroPhone = {
+  label: "This month · 14 subscriptions",
+  total: 247,
+  more: "Showing 6 of 14 · +8 more",
+  alert: { title: "NewsDaily renews in 3 days", price: "$12.00" },
+  description:
+    "Leakwise app preview: 14 subscriptions totalling $247 a month. PhotoPro is flagged as a trial ending in 2 days, FitPass as unused for 64 days, and a reminder says NewsDaily renews in 3 days with Keep and Cancel options.",
+} as const;
