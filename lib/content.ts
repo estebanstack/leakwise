@@ -135,3 +135,25 @@ export const features = {
     },
   ],
 } as const;
+
+export const calculator = {
+  eyebrow: "Savings calculator",
+  heading: "How much are you leaking?",
+  // Invented subline (draft copy, not in the brief).
+  subline: "Tap what you pay for. We'll do the math.",
+  /** Monthly prices in cents. */
+  chips: [
+    { id: "stream-a", name: "Streaming A", cents: 1549 },
+    { id: "stream-b", name: "Streaming B", cents: 1099 },
+    { id: "stream-c", name: "Streaming C", cents: 799 },
+    { id: "music", name: "Music", cents: 1099 },
+    { id: "cloud", name: "Cloud storage", cents: 299 },
+    { id: "gym", name: "Gym", cents: 3900 },
+    { id: "news", name: "News", cents: 1200 },
+    { id: "fitness", name: "Fitness app", cents: 1499 },
+    { id: "vpn", name: "VPN", cents: 1199 },
+    { id: "design", name: "Design tool", cents: 1299 },
+  ],
+  defaults: ["stream-a", "stream-b", "gym", "fitness", "design"],
+  empty: "Tap a few subscriptions to see your leak.",
+} as const;
